@@ -14,10 +14,10 @@
 | vpn-server | eth4      | 10.0.2.10   |
 
 ## Filtering rules
-(fill in Day 3)
+(fill in Day 3) We will fill it later :=)
 
 ## VPN configuration
-(fill in Day 2)
+(fill in Day 2) We will fill it later :=)
 
 ## Test results
 ### Scenario A — port whitelist
