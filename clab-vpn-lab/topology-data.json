@@ -28,13 +28,14 @@
       "image": "debian:bookworm-slim",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-address": "172.20.20.4",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
         "clab-git-branch": "main",
+        "clab-git-hash": "ef4ff08",
         "clab-mgmt-net-bridge": "br-395ce09137b4",
         "clab-node-group": "",
         "clab-node-kind": "linux",
@@ -60,13 +61,14 @@
       "image": "debian:bookworm-slim",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-address": "172.20.20.3",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
         "clab-git-branch": "main",
+        "clab-git-hash": "ef4ff08",
         "clab-mgmt-net-bridge": "br-395ce09137b4",
         "clab-node-group": "",
         "clab-node-kind": "linux",
@@ -92,13 +94,14 @@
       "image": "debian:bookworm-slim",
       "mgmt-net": "",
       "mgmt-intf": "",
-      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-address": "172.20.20.2",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
         "clab-git-branch": "main",
+        "clab-git-hash": "ef4ff08",
         "clab-mgmt-net-bridge": "br-395ce09137b4",
         "clab-node-group": "",
         "clab-node-kind": "linux",
@@ -120,13 +123,13 @@
         "a": {
           "node": "vpn-client",
           "interface": "eth1",
-          "mac": "aa:c1:ab:8b:e5:5e",
+          "mac": "aa:c1:ab:af:50:ca",
           "peer": "z"
         },
         "z": {
           "node": "firewall",
           "interface": "eth2",
-          "mac": "aa:c1:ab:26:51:d9",
+          "mac": "aa:c1:ab:79:a9:62",
           "peer": "a"
         }
       }
@@ -136,13 +139,13 @@
         "a": {
           "node": "firewall",
           "interface": "eth3",
-          "mac": "aa:c1:ab:69:e9:31",
+          "mac": "aa:c1:ab:4f:75:c5",
           "peer": "z"
         },
         "z": {
           "node": "vpn-server",
           "interface": "eth4",
-          "mac": "aa:c1:ab:b7:fc:42",
+          "mac": "aa:c1:ab:0e:bf:ac",
           "peer": "a"
         }
       }

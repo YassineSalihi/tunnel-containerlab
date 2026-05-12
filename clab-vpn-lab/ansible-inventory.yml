@@ -8,8 +8,8 @@ all:
     linux:
       hosts:
         clab-vpn-lab-firewall:
-          ansible_host: 172.20.20.2
-        clab-vpn-lab-vpn-client:
           ansible_host: 172.20.20.4
-        clab-vpn-lab-vpn-server:
+        clab-vpn-lab-vpn-client:
           ansible_host: 172.20.20.3
+        clab-vpn-lab-vpn-server:
+          ansible_host: 172.20.20.2

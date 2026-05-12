@@ -35,3 +35,27 @@
 - IP addressing configured manually on eth1-eth4
 - Verified: vpn-client -> vpn-server ping 0% loss, ~0.1ms
 
+
+### Day 2 — VPN tunnel established
+- SoftEther v4.43 build 9799
+- Protocol: TLS_AES_256_GCM_SHA384 over TCP port 443
+- Hub: VPN, User: vpnuser
+- Status: Session Established, 1 session, full duplex
+- SecureNAT enabled on server
+
+
+### Day 2 — Tunnel verification
+- vpn_vpn0 NIC created on client, IP: 192.168.30.10/24 (SecureNAT DHCP)
+- SecureNAT gateway: 192.168.30.1 (server-side virtual gateway)
+- Ping through tunnel: 0% loss, ~0.96ms avg, TTL=128
+- Encryption confirmed: TLS_AES_256_GCM_SHA384
+- Baseline established: tunnel works with no filtering rules in place
+
+## Baseline traffic summary
+| Test | Result |
+|------|--------|
+| client -> server (raw) | 0% loss, ~0.1ms |
+| client -> tunnel gateway | 0% loss, ~0.96ms |
+| VPN protocol | SoftEther over TCP/443 |
+| Encryption | TLS_AES_256_GCM_SHA384 |
+
