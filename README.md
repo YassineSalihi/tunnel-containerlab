@@ -113,3 +113,36 @@ tcp dport { 80, 443 } accept
 tcp sport { 80, 443 } accept
 }
 }
+
+### Scenario B — Results
+- Rules applied: iptables string match on "VPN" and "SoftEther" incoming eth2
+- Tunnel status: Retrying — connection never established
+- Sessions established: 0
+- Conclusion: SoftEther embeds identifiable strings in its handshake.
+  A DPI firewall can detect and block it even on port 443.
+  This simulates real-world DPI filtering used by restrictive networks.
+
+#### iptables ruleset (Scenario B)
+iptables -I FORWARD -i eth2 -m string --string "VPN" --algo bm -j DROP
+iptables -I FORWARD -i eth2 -m string --string "SoftEther" --algo bm -j DROP
+
+### Scenario C — Full block results
+- Rules applied:
+  - DROP tcp dport 443
+  - DROP tcp sport 443
+  - DROP udp (all)
+  - DROP icmp (all)
+- Tunnel status: Retrying — never establishes
+- Sessions established: 0
+- SoftEther exhausted all fallback protocols:
+  - TCP/443 blocked → tried DNS/UDP → blocked → tried ICMP → blocked
+- Conclusion: when all protocols are blocked simultaneously, no bypass
+  is possible. This is the expected and documented failure case.
+  Real-world equivalent: a completely locked-down network with deep
+  protocol inspection and whitelist-only egress.
+
+#### iptables ruleset (Scenario C)
+iptables -I FORWARD -p tcp --dport 443 -j DROP
+iptables -I FORWARD -p tcp --sport 443 -j DROP
+iptables -I FORWARD -p udp -j DROP
+iptables -I FORWARD -p icmp -j DROP
