@@ -1,0 +1,151 @@
+{
+  "name": "vpn-lab",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-395ce09137b4",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": [],
+  "nodes": {
+    "firewall": {
+      "index": "0",
+      "shortname": "firewall",
+      "longname": "clab-vpn-lab-firewall",
+      "fqdn": "firewall.vpn-lab.io",
+      "group": "",
+      "labdir": "/home/avgseen/projects/vpn-lab/clab-vpn-lab/firewall",
+      "kind": "linux",
+      "image": "debian:bookworm-slim",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "main",
+        "clab-mgmt-net-bridge": "br-395ce09137b4",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/avgseen/projects/vpn-lab/clab-vpn-lab/firewall",
+        "clab-node-longname": "clab-vpn-lab-firewall",
+        "clab-node-name": "firewall",
+        "clab-node-type": "",
+        "clab-owner": "avgseen",
+        "clab-topo-file": "/home/avgseen/projects/vpn-lab/topology.yml",
+        "containerlab": "vpn-lab"
+      },
+      "port-bindings": [
+      ]
+    },
+    "vpn-client": {
+      "index": "1",
+      "shortname": "vpn-client",
+      "longname": "clab-vpn-lab-vpn-client",
+      "fqdn": "vpn-client.vpn-lab.io",
+      "group": "",
+      "labdir": "/home/avgseen/projects/vpn-lab/clab-vpn-lab/vpn-client",
+      "kind": "linux",
+      "image": "debian:bookworm-slim",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "main",
+        "clab-mgmt-net-bridge": "br-395ce09137b4",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/avgseen/projects/vpn-lab/clab-vpn-lab/vpn-client",
+        "clab-node-longname": "clab-vpn-lab-vpn-client",
+        "clab-node-name": "vpn-client",
+        "clab-node-type": "",
+        "clab-owner": "avgseen",
+        "clab-topo-file": "/home/avgseen/projects/vpn-lab/topology.yml",
+        "containerlab": "vpn-lab"
+      },
+      "port-bindings": [
+      ]
+    },
+    "vpn-server": {
+      "index": "2",
+      "shortname": "vpn-server",
+      "longname": "clab-vpn-lab-vpn-server",
+      "fqdn": "vpn-server.vpn-lab.io",
+      "group": "",
+      "labdir": "/home/avgseen/projects/vpn-lab/clab-vpn-lab/vpn-server",
+      "kind": "linux",
+      "image": "debian:bookworm-slim",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "main",
+        "clab-mgmt-net-bridge": "br-395ce09137b4",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/avgseen/projects/vpn-lab/clab-vpn-lab/vpn-server",
+        "clab-node-longname": "clab-vpn-lab-vpn-server",
+        "clab-node-name": "vpn-server",
+        "clab-node-type": "",
+        "clab-owner": "avgseen",
+        "clab-topo-file": "/home/avgseen/projects/vpn-lab/topology.yml",
+        "containerlab": "vpn-lab"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "vpn-client",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:8b:e5:5e",
+          "peer": "z"
+        },
+        "z": {
+          "node": "firewall",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:26:51:d9",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "firewall",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:69:e9:31",
+          "peer": "z"
+        },
+        "z": {
+          "node": "vpn-server",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:b7:fc:42",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}

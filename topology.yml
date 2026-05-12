@@ -1,0 +1,19 @@
+name: vpn-lab
+
+topology:
+  nodes:
+    vpn-client:
+      kind: linux
+      image: debian:bookworm-slim
+
+    firewall:
+      kind: linux
+      image: debian:bookworm-slim
+
+    vpn-server:
+      kind: linux
+      image: debian:bookworm-slim
+
+  links:
+    - endpoints: ["vpn-client:eth1", "firewall:eth2"]
+    - endpoints: ["firewall:eth3", "vpn-server:eth4"]

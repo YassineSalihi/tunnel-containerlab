@@ -1,0 +1,16 @@
+---
+firewall:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.2
+vpn-client:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.4
+vpn-server:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.3
