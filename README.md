@@ -95,3 +95,21 @@ The FORWARD chain handles packets passing through (not destined for the firewall
 **Result:** (fill after test)
 **Pcap:** (attach screenshot)
 
+
+### Scenario A — Results
+- Rules applied: forward chain, policy drop, allow tcp 80/443 + established
+- Ping through tunnel: 0% loss, ~1ms avg
+- Tunnel status: Connected (session maintained)
+- Conclusion: SoftEther natively uses port 443, port-based filtering alone
+  is insufficient to block it. Tunnel is indistinguishable from HTTPS traffic
+  at the port level.
+
+#### nftables ruleset (Scenario A)
+table inet filter {
+chain forward {
+type filter hook forward priority filter; policy drop;
+ct state established,related accept
+tcp dport { 80, 443 } accept
+tcp sport { 80, 443 } accept
+}
+}
