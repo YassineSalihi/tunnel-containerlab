@@ -59,3 +59,39 @@
 | VPN protocol | SoftEther over TCP/443 |
 | Encryption | TLS_AES_256_GCM_SHA384 |
 
+
+## Day 3 — Filtering and bypass
+
+### What is nftables
+nftables is the Linux kernel's packet filtering framework. It replaces iptables.
+Rules are applied on the firewall container which sits between client and server.
+All traffic must pass through it, so rules here affect the VPN tunnel directly.
+
+### Filtering logic
+Traffic flows: vpn-client -> firewall (eth2) -> firewall (eth3) -> vpn-server
+The FORWARD chain handles packets passing through (not destined for the firewall itself).
+
+---
+
+### Scenario A — port whitelist
+**Rule:** allow only TCP ports 80 and 443, drop everything else
+**Hypothesis:** tunnel survives because SoftEther uses port 443 natively
+**Result:** (fill after test)
+**Pcap:** (attach screenshot)
+
+---
+
+### Scenario B — DPI simulation
+**Rule:** block packets containing SoftEther protocol signatures
+**Hypothesis:** tunnel breaks, obfuscation mode bypasses the block
+**Result:** (fill after test)
+**Pcap:** (attach screenshot)
+
+---
+
+### Scenario C — full block
+**Rule:** drop all forwarded traffic
+**Hypothesis:** tunnel fails, no bypass possible
+**Result:** (fill after test)
+**Pcap:** (attach screenshot)
+
