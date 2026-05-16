@@ -1,6 +1,5 @@
 # Project 8 — NAT and Filtering-Tolerant VPN
-**Author:** avgseen  
-**Duration:** 2 days (condensed from planned 4)  
+**Author:** Salihi Yassine && Zouine Razane  
 **Date:** May 2026  
 
 ---
